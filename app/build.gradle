@@ -43,6 +43,9 @@ dependencies {
 
     implementation(project(":core-db"))
     implementation(project(":core-ui"))
+    implementation(project(":core-utils"))
+
+    implementation(project(":feature-timetracker"))
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation "androidx.core:core-ktx:$ktxCoreVersion"

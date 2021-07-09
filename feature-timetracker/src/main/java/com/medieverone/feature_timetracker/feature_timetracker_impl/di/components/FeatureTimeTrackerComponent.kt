@@ -15,6 +15,8 @@ import javax.inject.Singleton
 @Singleton
 internal abstract class FeatureTimeTrackerComponent : FeatureTimeTrackerApi {
 
+    abstract fun presentersComponent(): PresentersComponent
+
     companion object {
 
         fun initAndGet(dependencies: FeatureTimeTrackerDependencies) : FeatureTimeTrackerComponent {

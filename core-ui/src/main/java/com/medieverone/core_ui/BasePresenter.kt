@@ -2,4 +2,4 @@ package com.medieverone.core_ui
 
 import moxy.MvpPresenter
 
-class BasePresenter<V: BaseView> : MvpPresenter<V>()
+abstract class BasePresenter<V: BaseView> : MvpPresenter<V>()

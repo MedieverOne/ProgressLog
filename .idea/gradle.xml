@@ -13,6 +13,7 @@
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/core-db" />
             <option value="$PROJECT_DIR$/core-ui" />
+            <option value="$PROJECT_DIR$/core-utils" />
             <option value="$PROJECT_DIR$/feature-timetracker" />
             <option value="$PROJECT_DIR$/module-injector" />
           </set>
