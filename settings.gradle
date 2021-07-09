@@ -1,0 +1,6 @@
+rootProject.name = "Progresslog"
+include ':app'
+include ':module-injector'
+include ':core-ui'
+include ':core-db'
+include ':feature-timetracker'
