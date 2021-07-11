@@ -14,14 +14,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <Chronometer
+        <TextView
             android:id="@+id/chTimeTracker"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:textSize="26sp"
             android:gravity="center"
-            android:countDown="false"
-            android:format="HH:MM:SS"
+            android:text="@string/timetracker_start_state"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -40,7 +39,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:text="Начать" />
+                android:text="@string/start_tracking" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/button_end_tracking"
@@ -48,7 +47,7 @@
                 android:layout_height="wrap_content"
                 android:visibility="gone"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:text="Закончить" />
+                android:text="@string/end_tracking" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

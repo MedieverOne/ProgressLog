@@ -55,6 +55,9 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
+    // Coroutines https://github.com/Kotlin/kotlinx.coroutines
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion"
+
     // Moxy https://github.com/moxy-community/Moxy
     implementation "com.github.moxy-community:moxy:$moxyVersion"
     implementation "com.github.moxy-community:moxy-androidx:$moxyVersion"

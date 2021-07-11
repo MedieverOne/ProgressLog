@@ -5,5 +5,4 @@ import dagger.Module
 @Module
 internal class FeatureTimeTrackerModule {
 
-
 }

@@ -1,40 +1,40 @@
 package com.medieverone.feature_timetracker.feature_timetracker_impl.presentation
 
 import com.medieverone.core_ui.BasePresenter
+import kotlinx.coroutines.*
 import moxy.InjectViewState
 import javax.inject.Inject
 
+@DelicateCoroutinesApi
 @InjectViewState
-class TimeTrackerPresenter @Inject constructor() : BasePresenter<TimeTrackerView>() {
-
-    private var trackingState: TrackingState = TrackingState.IS_STOP
-        set(value) {
-            field = value
-            changeButtonsVisibilityState(value)
-        }
+class TimeTrackerPresenter @Inject constructor(
+) : BasePresenter<TimeTrackerView>() {
 
     fun onStartTrackingClicked() {
-        trackingState = TrackingState.IS_TRACKING
+        viewState.startService()
     }
 
     fun onEndTrackingClicked() {
-        trackingState = TrackingState.IS_STOP
+        viewState.stopService()
     }
 
-    private fun changeButtonsVisibilityState(state: TrackingState) {
-        when (state) {
-            TrackingState.IS_TRACKING -> {
-                viewState.setStartTrackingButtonVisibility(false)
-                viewState.setEndTrackingButtonVisibility(true)
-            }
-            TrackingState.IS_STOP -> {
-                viewState.setStartTrackingButtonVisibility(true)
-                viewState.setEndTrackingButtonVisibility(false)
-            }
-        }
+    private fun changeButtonsVisibilityState(isTracking: Boolean) {
+        viewState.setStartTrackingButtonVisibility(!isTracking)
+        viewState.setEndTrackingButtonVisibility(isTracking)
     }
 
-    enum class TrackingState {
-        IS_TRACKING, IS_STOP
+    fun onTickTracking(timeInMillis: Long) {
+        viewState.showTime(timeInMillis = timeInMillis)
+        changeButtonsVisibilityState(true)
     }
+
+    fun onStartTracking() {
+        viewState.showTime(0)
+        changeButtonsVisibilityState(true)
+    }
+
+    fun onStopTracking(timeInMillis: Long) {
+        changeButtonsVisibilityState(false)
+    }
+
 }

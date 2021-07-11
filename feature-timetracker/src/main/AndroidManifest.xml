@@ -2,4 +2,25 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.medieverone.feature_timetracker">
 
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    
+    <application>
+
+        <service android:name=".feature_timetracker_impl.services.TimeTrackerService"
+            android:exported="false"
+            android:enabled="true"/>
+
+        <receiver android:name=".feature_timetracker_impl.receivers.TimeTrackerReceiver"
+            android:enabled="true"
+            android:exported="false">
+
+<!--            <intent-filter>-->
+<!--                <action android:name="com.medieverone.action.TIME_TRACKER_ON_TICK"/>-->
+<!--                <action android:name="com.medieverone.action.TIME_TRACKER_ON_START"/>-->
+<!--                <action android:name="com.medieverone.action.TIME_TRACKER_ON_STOP"/>-->
+<!--            </intent-filter>-->
+
+        </receiver>
+    </application>
+
 </manifest>

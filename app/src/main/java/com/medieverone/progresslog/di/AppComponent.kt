@@ -1,6 +1,7 @@
 package com.medieverone.progresslog.di
 
 import com.medieverone.progresslog.di.presenters.PresentersComponent
+import com.medieverone.progresslog.ui.MainActivity
 import dagger.Component
 import dagger.internal.Preconditions
 import javax.inject.Singleton
@@ -13,6 +14,7 @@ import javax.inject.Singleton
 abstract class AppComponent {
 
     abstract fun presentersComponent(): PresentersComponent
+    abstract fun inject(activity: MainActivity)
 
     companion object {
 

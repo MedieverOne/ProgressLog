@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_graph"
+    app:startDestination="@id/timeTrackerFragment">
+
+    <fragment
+        android:id="@+id/timeTrackerFragment"
+        android:name="com.medieverone.feature_timetracker.feature_timetracker_impl.presentation.TimeTrackerFragment"
+        android:label="TimeTrackerFragment" />
+</navigation>
