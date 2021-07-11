@@ -34,6 +34,7 @@ ext {
     rxAndroidVersion = "2.1.1"
     navigationGraphVersion = "2.3.5"
     daggerVersion = "2.30.1"
+    coroutinesVersion = "1.5.1"
 }
 
 allprojects {

@@ -3,6 +3,7 @@ package com.medieverone.feature_timetracker.feature_timetracker_impl.di.componen
 import com.medieverone.feature_timetracker.feature_timetracker_api.FeatureTimeTrackerApi
 import com.medieverone.feature_timetracker.feature_timetracker_impl.di.FeatureTimeTrackerDependencies
 import com.medieverone.feature_timetracker.feature_timetracker_impl.di.modules.FeatureTimeTrackerModule
+import com.medieverone.feature_timetracker.feature_timetracker_impl.presentation.TimeTrackerFragment
 import dagger.Component
 import javax.inject.Singleton
 
@@ -14,6 +15,8 @@ import javax.inject.Singleton
 )
 @Singleton
 internal abstract class FeatureTimeTrackerComponent : FeatureTimeTrackerApi {
+
+    abstract fun presentersComponent(): PresentersComponent
 
     companion object {
 

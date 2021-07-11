@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="start_tracking">Начать</string>
+    <string name="end_tracking">Закончить</string>
+    <string name="timetracker_start_state">00:00:00</string>
+</resources>
