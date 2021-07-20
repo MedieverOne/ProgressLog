@@ -3,6 +3,7 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-kapt'
     id 'realm-android'
+    id 'androidx.navigation.safeargs'
 }
 
 android {
@@ -42,6 +43,8 @@ dependencies {
 
     implementation(project(":module-injector"))
 
+    implementation(project(':core-navigation'))
+
     implementation(project(":core-db"))
     implementation(project(":core-utils"))
     implementation project(path: ':core-ui')
@@ -54,6 +57,10 @@ dependencies {
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+    // Navigation Component
+    implementation "androidx.navigation:navigation-fragment-ktx:$navigationGraphVersion"
+    implementation "androidx.navigation:navigation-ui-ktx:$navigationGraphVersion"
 
     // Coroutines https://github.com/Kotlin/kotlinx.coroutines
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion"

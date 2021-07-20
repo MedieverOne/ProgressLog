@@ -2,6 +2,7 @@ package com.medieverone.core_utils.extensions
 
 import android.annotation.SuppressLint
 import android.view.View
+import android.widget.Toast
 import java.util.concurrent.TimeUnit
 
 
@@ -21,4 +22,9 @@ val Long.toFormattedTimeString: String
             )
         )
 
+    }
+
+val Boolean.asToastDuration: Int
+    get() {
+        return if(this) Toast.LENGTH_LONG else Toast.LENGTH_SHORT
     }

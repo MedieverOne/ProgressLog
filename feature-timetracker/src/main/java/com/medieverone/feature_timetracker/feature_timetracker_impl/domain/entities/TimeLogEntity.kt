@@ -5,5 +5,6 @@ import java.util.*
 data class TimeLogEntity(
     val time: Long,
     val date: Date,
-    val comment: String
+    val comment: String,
+    val activity: UserActivityEntity?
 )

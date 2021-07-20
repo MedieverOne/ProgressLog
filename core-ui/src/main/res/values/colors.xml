@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorWhite">#FFF</color>
+    <color name="colorBlack">#000</color>
+
+    // GRAY
+    <color name="colorGrayTransparentNevada">#B068696A</color>
+    <color name="colorGrayTransparentBaliHai">#8D8F9DAC</color>
+    <color name="colorGrayLightIron">#CDD1D6</color>
+    <color name="colorAthensGray">#E8EAEE</color>
+</resources>

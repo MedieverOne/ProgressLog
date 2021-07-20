@@ -3,4 +3,8 @@
     <string name="start_tracking">Начать</string>
     <string name="end_tracking">Закончить</string>
     <string name="timetracker_start_state">00:00:00</string>
+    <string name="activity_title">Активность:</string>
+    <string name="btn_add_activity">Добавить активность</string>
+    <string name="enter_user_activity_name">Введите название активности:</string>
+    <string name="create">Создать</string>
 </resources>

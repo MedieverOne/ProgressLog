@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import com.medieverone.core_ui.BaseFragment
 import com.medieverone.core_utils.changeVisibility
 import com.medieverone.core_utils.extensions.toFormattedTimeString
@@ -118,5 +119,11 @@ class TimeTrackerFragment : BaseFragment(), TimeTrackerView {
         val intent = Intent(requireActivity(), TimeTrackerService::class.java)
 
         requireActivity().stopService(intent)
+    }
+
+    override fun onStopTracking(timeInMillis: Long) {
+        val action = TimeTrackerFragmentDirections.navigateToAddTimeFragment()
+        action.setTrackedTime(timeInMillis)
+        findNavController().navigate(action)
     }
 }

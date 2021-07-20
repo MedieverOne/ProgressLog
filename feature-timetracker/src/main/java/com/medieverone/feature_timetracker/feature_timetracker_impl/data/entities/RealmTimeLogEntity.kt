@@ -13,12 +13,17 @@ open class RealmTimeLogEntity: RealmObject() {
     var time: Long = 0L
     var date: Date = Date()
     var comment: String = ""
+    var activityId: Int? = null
 
     fun toDomain(): TimeLogEntity {
         return TimeLogEntity(
             time = this.time,
             date = this.date,
-            comment = this.comment
+            comment = this.comment,
+            activity = realm.where(RealmUserActivityEntity::class.java)
+                .equalTo("id", activityId)
+                .findFirst()
+                ?.toDomain()
         )
     }
 
@@ -28,6 +33,7 @@ open class RealmTimeLogEntity: RealmObject() {
                 time = timeLogEntity.time
                 date = timeLogEntity.date
                 comment = timeLogEntity.comment
+                activityId = timeLogEntity.activity?.id
             }
         }
     }

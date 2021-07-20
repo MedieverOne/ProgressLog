@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@id/time_tracker_flow"
+    app:startDestination="@id/timeTrackerFragment">
+
+    <fragment
+        android:id="@+id/timeTrackerFragment"
+        android:name="com.medieverone.feature_timetracker.feature_timetracker_impl.presentation.TimeTrackerFragment"
+        android:label="TimeTrackerFragment" >
+        <action
+            android:id="@+id/navigateToAddTimeFragment"
+            app:destination="@id/addTimeFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/addTimeFragment"
+        android:name="com.medieverone.feature_timetracker.feature_timetracker_impl.presentation.add_time_to_log.AddTimeFragment"
+        android:label="AddTimeFragment" >
+        <action
+            android:id="@+id/navigateToCreateUserActivityFragment"
+            app:destination="@id/createUserActivityFragment" />
+        <argument
+            android:name="trackedTime"
+            app:argType="long"
+            android:defaultValue="0L" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/createUserActivityFragment"
+        android:name="com.medieverone.feature_timetracker.feature_timetracker_impl.presentation.create_user_activity.CreateUserActivityFragment"
+        android:label="CreateUserActivityFragment" />
+
+</navigation>

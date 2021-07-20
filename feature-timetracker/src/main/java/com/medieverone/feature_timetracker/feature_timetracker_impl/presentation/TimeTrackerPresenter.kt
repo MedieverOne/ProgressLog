@@ -34,6 +34,7 @@ class TimeTrackerPresenter @Inject constructor(
     }
 
     fun onStopTracking(timeInMillis: Long) {
+        viewState.onStopTracking(timeInMillis)
         changeButtonsVisibilityState(false)
     }
 

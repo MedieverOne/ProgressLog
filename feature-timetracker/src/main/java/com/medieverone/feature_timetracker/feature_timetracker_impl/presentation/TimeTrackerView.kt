@@ -21,4 +21,7 @@ interface TimeTrackerView : BaseView {
 
     @StateStrategyType(OneExecutionStateStrategy::class)
     fun stopService()
+
+    @StateStrategyType(OneExecutionStateStrategy::class)
+    fun onStopTracking(timeInMillis: Long)
 }

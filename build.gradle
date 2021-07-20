@@ -2,6 +2,7 @@
 buildscript {
     ext.kotlin_version = "1.4.30"
     ext.realm_version = "7.0.0"
+    ext.safe_args_version = "1.0.0"
     repositories {
         google()
         jcenter()
@@ -11,6 +12,7 @@ buildscript {
         classpath "com.android.tools.build:gradle:4.2.1"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath "io.realm:realm-gradle-plugin:$realm_version"
+        classpath "android.arch.navigation:navigation-safe-args-gradle-plugin:$safe_args_version"
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
