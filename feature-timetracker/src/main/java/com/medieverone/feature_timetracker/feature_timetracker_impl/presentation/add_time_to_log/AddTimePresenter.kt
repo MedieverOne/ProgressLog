@@ -1,10 +1,10 @@
 package com.medieverone.feature_timetracker.feature_timetracker_impl.presentation.add_time_to_log
 
 import com.medieverone.core_ui.BasePresenter
-import com.medieverone.feature_timetracker.feature_timetracker_impl.domain.entities.TimeLogEntity
-import com.medieverone.feature_timetracker.feature_timetracker_impl.domain.entities.UserActivityEntity
-import com.medieverone.feature_timetracker.feature_timetracker_impl.domain.usecases.TimeLogUseCase
-import com.medieverone.feature_timetracker.feature_timetracker_impl.domain.usecases.UserActivitiesUseCase
+import com.medieverone.feature_activities.featue_activities_api.ActivitiesApi
+import com.medieverone.feature_activities.featue_activities_api.FeatureActivitiesApi
+import com.medieverone.feature_activities.feature_activities_impl.domain.entities.ActivityEntity
+import com.medieverone.feature_activities.feature_activities_impl.domain.entities.TimeLogEntity
 import kotlinx.coroutines.*
 import moxy.InjectViewState
 import javax.inject.Inject
@@ -12,17 +12,18 @@ import javax.inject.Inject
 @DelicateCoroutinesApi
 @InjectViewState
 class AddTimePresenter @Inject constructor(
-    private val userActivitiesUseCase: UserActivitiesUseCase,
-    private val timeLogUseCase: TimeLogUseCase
+    private val featureActivitiesApi: ActivitiesApi
 ) : BasePresenter<AddTimeView>() {
 
     @Volatile
     var time = 0L
+    @Volatile
+    var currentActivity: ActivityEntity? = null
 
     fun initActivitiesSpinner() {
         job = GlobalScope.launch(Dispatchers.Main) {
             val result = withContext(Dispatchers.IO) {
-                userActivitiesUseCase.getAllUserActivities()
+                featureActivitiesApi.getActivities()
             }
             viewState.initActivitiesSpinner(result)
         }
@@ -38,12 +39,12 @@ class AddTimePresenter @Inject constructor(
     }
 
     fun onAddTimeClicked(timeLogEntity: TimeLogEntity) {
-        if (timeLogEntity.activity == null) {
-            viewState.showToast("Вы не можете добавить время, не привязав его к актинвости")
+        if (currentActivity == null) {
+            viewState.showToast("Установите активность!")
             return
         }
         job = GlobalScope.launch(Dispatchers.IO) {
-            timeLogUseCase.saveTimeLog(timeLogEntity)
+            featureActivitiesApi.addTimeToActivity(currentActivity!!, timeLogEntity)
             withContext(Dispatchers.Main) {
                 viewState.navigateToPreviousScreen()
                 viewState.showToast("Время успешно записано в логи")
@@ -51,12 +52,16 @@ class AddTimePresenter @Inject constructor(
         }
     }
 
-    fun onActivityItemLongClicked(item: UserActivityEntity) {
-        job = GlobalScope.launch(Dispatchers.Main) {
-            withContext(Dispatchers.IO) {
-                userActivitiesUseCase.deleteUserActivity(item.tag)
-            }
-            viewState.refreshUserActivityAdapter()
-        }
+    fun onActivityClicked(activityEntity: ActivityEntity) {
+        currentActivity = activityEntity
     }
+
+//    fun onActivityItemLongClicked(item: ActivityEntity) {
+//        job = GlobalScope.launch(Dispatchers.Main) {
+//            withContext(Dispatchers.IO) {
+//                userActivitiesUseCase.deleteUserActivity(item.tag)
+//            }
+//            viewState.refreshUserActivityAdapter()
+//        }
+//    }
 }

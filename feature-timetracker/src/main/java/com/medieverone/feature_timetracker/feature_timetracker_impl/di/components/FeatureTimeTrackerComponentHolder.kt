@@ -29,7 +29,7 @@ object FeatureTimeTrackerComponentHolder :
 
     internal fun getComponent(): FeatureTimeTrackerComponent {
         checkNotNull(featureTimeTrackerComponent) {
-            "FeatureTimeTrackerComponent isnt initialized"
+            "FeatureTimeTrackerComponent isn't initialized"
         }
         return featureTimeTrackerComponent!!
     }

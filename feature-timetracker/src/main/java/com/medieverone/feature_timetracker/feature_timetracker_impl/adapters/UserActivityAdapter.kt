@@ -6,15 +6,21 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.SpinnerAdapter
+import com.medieverone.feature_activities.feature_activities_impl.domain.entities.ActivityEntity
 import com.medieverone.feature_timetracker.R
 import com.medieverone.feature_timetracker.databinding.UserActivityItemBinding
-import com.medieverone.feature_timetracker.feature_timetracker_impl.domain.entities.UserActivityEntity
 
 class UserActivityAdapter(
-    private val context: Context
+    private val context: Context,
+    private val callback: Callback? = null
 ) : BaseAdapter(), SpinnerAdapter {
 
-    val items: ArrayList<UserActivityEntity> = arrayListOf()
+    interface Callback {
+
+        fun onItemClicked(activity: ActivityEntity)
+    }
+
+    val items: ArrayList<ActivityEntity> = arrayListOf()
     private var _binding: UserActivityItemBinding? = null
     private val binding get() = _binding!!
 
@@ -33,7 +39,10 @@ class UserActivityAdapter(
         val view = View.inflate(context, R.layout.user_activity_item, null)
         _binding = UserActivityItemBinding.bind(view)
 
-        binding.tvUserActivityText.text = items[position].tag
+        binding.tvUserActivityText.text = items[position].name
+        view.setOnClickListener {
+            callback?.onItemClicked(items[position])
+        }
         return view
     }
 

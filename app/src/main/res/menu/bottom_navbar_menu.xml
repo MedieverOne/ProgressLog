@@ -6,12 +6,7 @@
         android:icon="@android:drawable/ic_menu_add"
         />
     <item
-        android:id="@id/time_log_flow"
+        android:id="@id/activities_flow"
         android:title="Timelog"
         android:icon="@android:drawable/ic_menu_gallery"/>
-
-    <item
-        android:id="@id/menu_flow"
-        android:title="Statistics"
-        android:icon="@android:drawable/ic_menu_info_details"/>
 </menu>

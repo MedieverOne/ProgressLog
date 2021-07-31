@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <item name="time_log_flow" type="id"/>
+    <item name="activities_flow" type="id"/>
     <item name="time_tracker_flow" type="id"/>
-    <item name="menu_flow" type="id"/>
 </resources>

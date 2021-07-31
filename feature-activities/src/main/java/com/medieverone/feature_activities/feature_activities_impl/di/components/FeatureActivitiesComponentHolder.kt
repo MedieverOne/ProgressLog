@@ -1,10 +1,11 @@
 package com.medieverone.feature_activities.feature_activities_impl.di.components
 
 import com.medieverone.feature_activities.featue_activities_api.FeatureActivitiesApi
-import com.medieverone.feature_activities.feature_activities_impl.di.FeatureActivitiesComponent
 import com.medieverone.feature_activities.feature_activities_impl.di.FeatureActivitiesDependencies
 import com.medieverone.module_injector.ComponentHolder
+import kotlinx.coroutines.DelicateCoroutinesApi
 
+@DelicateCoroutinesApi
 object FeatureActivitiesComponentHolder :
     ComponentHolder<FeatureActivitiesApi, FeatureActivitiesDependencies> {
 

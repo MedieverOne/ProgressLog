@@ -2,8 +2,10 @@ package com.medieverone.feature_activities.feature_activities_impl.data.entities
 
 import com.medieverone.core_db.core_db_impl.utils.RealmInt
 import com.medieverone.feature_activities.feature_activities_impl.domain.entities.ActivityEntity
+import io.realm.RealmList
 import io.realm.RealmObject
 import io.realm.annotations.PrimaryKey
+import java.util.*
 
 open class RealmActivityEntity : RealmObject() {
 
@@ -12,7 +14,7 @@ open class RealmActivityEntity : RealmObject() {
 
     var name: String = ""
     var timeInMillis: Long = 0
-    var logsIds: List<RealmInt>? = null
+    var logsIds: RealmList<RealmInt>? = null
 
     fun toDomain(): ActivityEntity {
         return ActivityEntity(
@@ -26,13 +28,21 @@ open class RealmActivityEntity : RealmObject() {
     companion object {
         fun fromDomain(entity: ActivityEntity): RealmActivityEntity {
             return RealmActivityEntity().apply {
+                val realmIdsList = RealmList<RealmInt>()
+                entity.logsIds?.forEach {
+                    val intObject = realm.createObject(RealmInt::class.java)
+                    intObject.value = it
+                    realmIdsList.add(intObject)
+                }
                 this.id = entity.id
                 this.name = entity.name
                 this.timeInMillis = entity.timeInMillis
-                this.logsIds = entity.logsIds?.map { RealmInt().apply { value = it } }
+                this.logsIds = realmIdsList
             }
 
         }
     }
+
+
 
 }

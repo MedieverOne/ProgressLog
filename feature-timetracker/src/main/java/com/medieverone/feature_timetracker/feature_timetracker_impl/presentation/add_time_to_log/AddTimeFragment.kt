@@ -1,19 +1,17 @@
 package com.medieverone.feature_timetracker.feature_timetracker_impl.presentation.add_time_to_log
 
 import android.os.Bundle
-import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.get
 import androidx.navigation.fragment.findNavController
 import com.medieverone.core_ui.BaseFragment
 import com.medieverone.core_utils.extensions.toFormattedTimeString
+import com.medieverone.feature_activities.feature_activities_impl.domain.entities.ActivityEntity
+import com.medieverone.feature_activities.feature_activities_impl.domain.entities.TimeLogEntity
 import com.medieverone.feature_timetracker.databinding.FragmentAddTimeBinding
 import com.medieverone.feature_timetracker.feature_timetracker_impl.adapters.UserActivityAdapter
 import com.medieverone.feature_timetracker.feature_timetracker_impl.di.components.FeatureTimeTrackerComponentHolder
-import com.medieverone.feature_timetracker.feature_timetracker_impl.domain.entities.TimeLogEntity
-import com.medieverone.feature_timetracker.feature_timetracker_impl.domain.entities.UserActivityEntity
 import kotlinx.coroutines.DelicateCoroutinesApi
 import moxy.presenter.InjectPresenter
 import moxy.presenter.ProvidePresenter
@@ -60,8 +58,12 @@ class AddTimeFragment : BaseFragment(), AddTimeView {
         _binding = null
     }
 
-    override fun initActivitiesSpinner(activities: List<UserActivityEntity>) {
-        activitiesAdapter = UserActivityAdapter(requireContext())
+    override fun initActivitiesSpinner(activities: List<ActivityEntity>) {
+        activitiesAdapter = UserActivityAdapter(requireContext(), object: UserActivityAdapter.Callback {
+            override fun onItemClicked(activity: ActivityEntity) {
+                presenter.onActivityClicked(activity)
+            }
+        })
         binding.spinnerUserActivity.adapter = activitiesAdapter
         activitiesAdapter?.items?.addAll(activities)
         activitiesAdapter?.notifyDataSetChanged()
@@ -81,12 +83,11 @@ class AddTimeFragment : BaseFragment(), AddTimeView {
             presenter.onAddActivityClicked()
         }
         binding.btnSaveTime.setOnClickListener {
-            val activity = binding.spinnerUserActivity.selectedItem as UserActivityEntity?
             val timeLogEntity = TimeLogEntity(
+                id = (0..Int.MAX_VALUE).random(),
                 time = presenter.time,
                 date = Date(),
-                comment = "",
-                activity = activity
+                comment = ""
             )
             presenter.onAddTimeClicked(timeLogEntity)
         }

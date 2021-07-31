@@ -13,11 +13,14 @@ import moxy.presenter.InjectPresenter
 import moxy.presenter.ProvidePresenter
 import javax.inject.Inject
 import androidx.navigation.ui.setupActionBarWithNavController
+import com.medieverone.feature_activities.featue_activities_api.FeatureActivitiesApi
 
 class MainActivity : BaseActivity(), MainView {
 
     @Inject
     lateinit var featureTimeTrackerApi: FeatureTimeTrackerApi
+    @Inject
+    lateinit var featureActivitiesApi: FeatureActivitiesApi
 
     @InjectPresenter
     lateinit var presenter: MainPresenter
@@ -55,8 +58,7 @@ class MainActivity : BaseActivity(), MainView {
         // Important: Ids must be listed in the same order as in the bottom nav bar from left to right
         val navGraphIds = listOf(
             R.navigation.time_tracker_flow,
-            R.navigation.time_log_flow,
-            R.navigation.menu_flow
+            R.navigation.activities_flow
         )
 
         // Setup the bottom navigation view with a list of navigation graphs

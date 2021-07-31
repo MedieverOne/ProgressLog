@@ -45,6 +45,8 @@ dependencies {
 
     implementation(project(':core-navigation'))
 
+    implementation(project(":feature-activities"))
+
     implementation(project(":core-db"))
     implementation(project(":core-utils"))
     implementation project(path: ':core-ui')
