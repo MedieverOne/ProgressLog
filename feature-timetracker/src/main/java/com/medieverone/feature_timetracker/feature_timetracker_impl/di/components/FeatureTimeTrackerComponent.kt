@@ -3,18 +3,13 @@ package com.medieverone.feature_timetracker.feature_timetracker_impl.di.componen
 import com.medieverone.feature_timetracker.feature_timetracker_api.FeatureTimeTrackerApi
 import com.medieverone.feature_timetracker.feature_timetracker_impl.di.FeatureTimeTrackerDependencies
 import com.medieverone.feature_timetracker.feature_timetracker_impl.di.modules.FeatureTimeTrackerModule
-import com.medieverone.feature_timetracker.feature_timetracker_impl.di.modules.GatewayModule
-import com.medieverone.feature_timetracker.feature_timetracker_impl.di.modules.UseCaseModule
-import com.medieverone.feature_timetracker.feature_timetracker_impl.presentation.TimeTrackerFragment
 import dagger.Component
 import kotlinx.coroutines.DelicateCoroutinesApi
 import javax.inject.Singleton
 
 @Component(
     modules = [
-        FeatureTimeTrackerModule::class,
-        UseCaseModule::class,
-        GatewayModule::class
+        FeatureTimeTrackerModule::class
     ],
     dependencies = [FeatureTimeTrackerDependencies::class]
 )

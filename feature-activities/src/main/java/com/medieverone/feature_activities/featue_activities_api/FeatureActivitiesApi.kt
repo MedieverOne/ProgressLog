@@ -1,4 +1,6 @@
 package com.medieverone.feature_activities.featue_activities_api
 
-interface FeatureActivitiesApi {
+import com.medieverone.module_injector.BaseApi
+
+interface FeatureActivitiesApi : BaseApi {
 }
